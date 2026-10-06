@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AssistHospital - Rendez-vous médical</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      color: #172b4d;
+    }
+
+    header {
+      background: #087f8c;
+      color: white;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 30px 20px;
+      background: white;
+    }
+
+    .hero h2 {
+      color: #087f8c;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .hero p {
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #087f8c;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #087f8c;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #087f8c;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #066873;
+    }
+
+    #confirmation {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #e8f7ef;
+      border: 1px solid #8bd5aa;
+      color: #176b3a;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 20px;
+      text-align: center;
+      background: #172b4d;
+      color: white;
+      font-size: 13px;
+    }
+
+    .logo {
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .hero h2 {
+        font-size: 21px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">🏥</div>
+    <h1>AssistHospital</h1>
+    <p>Votre rendez-vous médical, simplement.</p>
+  </header>
+
+  <section class="hero">
+    <h2>Bienvenue sur AssistHospital</h2>
+    <p>
+      Prenez facilement rendez-vous avec le médecin de votre choix
+      et facilitez l'organisation de votre visite à l'hôpital.
+    </p>
+  </section>
+
+  <div class="container">
+
+    <div class="card">
+
+      <h3>📅 Prendre un rendez-vous</h3>
+
+      <form id="appointmentForm">
+
+        <label for="name">Nom et prénom</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Ex : Jean Dupont"
+          required
+        >
+
+        <label for="phone">Numéro de téléphone</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Ex : 97 00 00 00"
+          required
+        >
+
+        <label for="doctor">Choisir un médecin</label>
+        <select id="doctor" required>
+          <option value="">-- Choisir un médecin --</option>
+          <option value="Dr. Aïcha">Dr. Aïcha - Médecine générale</option>
+          <option value="Dr. Michel">Dr. Michel - Cardiologie</option>
+          <option value="Dr. Sarah">Dr. Sarah - Pédiatrie</option>
+          <option value="Dr. David">Dr. David - Dermatologie</option>
+        </select>
+
+        <label for="date">Date du rendez-vous</label>
+        <input
+          type="date"
+          id="date"
+          required
+        >
+
+        <label for="time">Heure</label>
+        <select id="time" required>
+          <option value="">-- Choisir une heure --</option>
+          <option value="08:00">08:00</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+        </select>
+
+        <label for="reason">Motif du rendez-vous</label>
+        <input
+          type="text"
+          id="reason"
+          placeholder="Ex : Consultation"
+          required
+        >
+
+        <button type="submit">
+          Confirmer le rendez-vous
+        </button>
+
+      </form>
+
+      <div id="confirmation"></div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 AssistHospital — Plateforme de prise de rendez-vous
+  </footer>
+
+  <script>
+    const form = document.getElementById("appointmentForm");
+    const confirmation = document.getElementById("confirmation");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const doctor = document.getElementById("doctor").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const reason = document.getElementById("reason").value;
+
+      confirmation.style.display = "block";
+
+      confirmation.innerHTML = `
+        <strong>✅ Rendez-vous enregistré !</strong><br><br>
+
+        <strong>Patient :</strong> ${name}<br>
+        <strong>Téléphone :</strong> ${phone}<br>
+        <strong>Médecin :</strong> ${doctor}<br>
+        <strong>Date :</strong> ${date}<br>
+        <strong>Heure :</strong> ${time}<br>
+        <strong>Motif :</strong> ${reason}<br><br>
+
+        Merci d'avoir utilisé AssistHospital.
+      `;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+  </html>
